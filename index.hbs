@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video meet</title>
+    <link type="text/css" rel="stylesheet" href="https://source.zoom.us/2.1.1/css/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="https://source.zoom.us/2.1.1/css/react-select.css" />
+</head>
+<body>
+
+
+    <script src="https://source.zoom.us/2.1.1/lib/vendor/react.min.js"></script>
+	<script src="https://source.zoom.us/2.1.1/lib/vendor/react-dom.min.js"></script>
+	<script src="https://source.zoom.us/2.1.1/lib/vendor/redux.min.js"></script>
+	<script src="https://source.zoom.us/2.1.1/lib/vendor/redux-thunk.min.js"></script>
+	<script src="https://source.zoom.us/2.1.1/lib/vendor/lodash.min.js"></script>
+
+	<!-- For Component View -->
+    <script src="https://source.zoom.us/2.1.1/zoom-meeting-embedded-2.1.1.min.js"></script>
+	<button onclick="startmeet()"> start meet</button>
+	<div id="meetingSDKElement">
+   <!-- Zoom Meeting SDK Rendered Here -->
+</div>
+ 
+<script>
+    function startmeet()
+    {
+    const client = ZoomMtgEmbedded.createClient();
+    let meetingSDKElement = document.getElementById('meetingSDKElement');
+
+client.init({
+  debug: true,
+  zoomAppRoot: meetingSDKElement,
+  language: 'en-US',
+  customize: {
+    meetingInfo: ['topic', 'host', 'mn', 'pwd', 'telPwd', 'invite', 'participant', 'dc', 'enctype'],
+    toolbar: {
+      buttons: [
+        {
+          text: 'Custom Button',
+          className: 'CustomButton',
+          onClick: () => {
+            console.log('custom button');
+          }
+        }
+      ]
+    }
+  }
+});
+client.join({
+    meetingNumber: '84366909856',
+    userName: 'dravid',
+    userEmail: '',
+    password: '0GkTC1',
+    apiKey: 'zhPqKC0eSQer-uDREOKRwA',
+    signature: 'emhQcUtDMGVTUWVyLXVEUkVPS1J3QS44NDM2NjkwOTg1Ni4xNjQzMjYyMjY2NTY0LjAuZER4TGU4ckdmZ1pNSkdQRmR3bEtJWnRRQzJFWWdUMHJyMkFSZzRTVU5pUT0=',
+    success: function(res){console.log(res)},
+    error: function(res){console.log(res)}
+ })
+}
+</script>
+    
+</body>
+</html>
