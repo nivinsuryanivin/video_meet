@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video meet</title>
+    <style>
+      #zmmtg-root {
+    display: none;
+}
+      
+    </style>
+    <link type="text/css" rel="stylesheet" href="https://source.zoom.us/{'{'}2.2.0}/css/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="https://source.zoom.us/{'{'}2.2.0}/css/react-select.css" />
+   
+</head>
+<body>
+
+
+   <script src="https://source.zoom.us/2.2.0/lib/vendor/react.min.js"></script>
+    <script src="https://source.zoom.us/2.2.0/lib/vendor/react-dom.min.js"></script>
+    <script src="https://source.zoom.us/2.2.0/lib/vendor/redux.min.js"></script>
+    <script src="https://source.zoom.us/2.2.0/lib/vendor/redux-thunk.min.js"></script>
+    <script src="https://source.zoom.us/2.2.0/lib/vendor/lodash.min.js"></script>
+    <script src="https://source.zoom.us/zoom-meeting-2.2.0.min.js"></script>
+   <button onclick="startmeet()"style="color:blue;"> start meet</button>
+	
+  
+ 
+<script>
+    function startmeet()
+    {
+         ZoomMtg.setZoomJSLib('https://source.zoom.us/2.2.0/lib', '/av');
+        
+    ZoomMtg.preLoadWasm();
+    ZoomMtg.prepareWebSDK();
+// loads language files, also passes any error messages to the ui
+    
+   
+    
+
+
+    const zoomMeetingSDK = document.getElementById("zmmtg-root");
+
+// To hide
+//zoomMeetingSDK.style.display = 'none';
+
+// To show
+zoomMeetingSDK.style.display = 'block';
+
+    var leaveUrl = 'http://localhost:9999/thanks-for-joining.html'
+
+ZoomMtg.init({
+  leaveUrl: leaveUrl,
+  success: (success) => {
+    console.log(success)
+    ZoomMtg.i18n.load('en-EN');
+    ZoomMtg.i18n.reload('en-EN');
+    ZoomMtg.join({
+      signature:'emhQcUtDMGVTUWVyLXVEUkVPS1J3QS40OTM2MjExMTYyLjE2NDM2MDk4MjUxMDUuMS5nUmJyZUp1RWJHK1NyaVFWTlJiU1BOcUUyTnVpNnpuZEYzZ2djRTk0SmtVPQ==',
+      apiKey: 'zhPqKC0eSQer-uDREOKRwA',
+      meetingNumber:'936211162',
+      userName: 'dravid',
+      password: '0GkTC1',
+  success: (success) => {
+    console.log(success);
+  },
+  error: (error) => {
+    console.log(error);
+  },
+    })
+  },
+  error: (error) => {
+    console.log(error)
+  }
+})
+ }   
+</script>  
+
+<div id="zmmtg-root"></div>
+    <div id="aria-notify-area"></div>
+</body>
+
+</html>
